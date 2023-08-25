@@ -1,41 +1,48 @@
-window.player = null
-document.addEventListener('DOMContentLoaded', () => {
-    window.player = new ncplayer('player',{
+window.drmPlayer = null
+
+document.addEventListener('DOMContentLoaded',  async ()=> {
+
+    window.drmPlayer = await ncplayerDRM('player',{
         playlist:[
             {
-                file:'https://fsxikvammvwv14470411.cdn.ntruss.com/hls/9N5-iJ4f9tdzE6D708PTmg__/vod/j5IXBfIJ83893893_,1080,720,480,p.mp4.smil/master.m3u8',
-                poster:'https://wnfosehmzhuc12665447.cdn.ntruss.com/thumb/sample_thumb.png?type=m&w=1024&h=760&ttype=jpg',
-                description: {
-                    title: "네이버클라우드 소개 영상",
-                    created_at: "2023.07.13",
-                    profile_name: "네이버클라우드",
-                    profile_image: "https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202208/d127c8db642716d84b3201f1d152e52a.png"
+                drm:{
+                    'com.apple.fps':{
+                        src : 'https://contents.pallycon.com/bunny/hls/master.m3u8',
+                        certificateUri: 'https://license-global.pallycon.com/ri/fpsKeyManager.do?siteId=DEMO',
+                        licenseUri : 'https://license-global.pallycon.com/ri/licenseManager.do',
+                        licenseRequestHeader:{
+                            'Content-type': 'application/x-www-form-urlencoded',
+                            'pallycon-customdata-v2':'eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0LXVzZXIiLCJkcm1fdHlwZSI6IkZhaXJQbGF5Iiwic2l0ZV9pZCI6IkRFTU8iLCJoYXNoIjoiY21NZkZPUExrakErbTVLZ3BKS09vVnVmRTVTc3hKdVlTUm1jUWM1dmlVUT0iLCJjaWQiOiJiaWdidWNrYnVubnkiLCJwb2xpY3kiOiJuNXgyOHVZbURkUENGaW1vTTNuR053PT0iLCJ0aW1lc3RhbXAiOiIyMDIxLTAxLTA2VDA5OjI0OjI4WiJ9'
+                        }
+                    },
+                    'com.widevine.alpha':{
+                        src : 'https://contents.pallycon.com/bunny/stream.mpd',
+                        licenseUri : 'https://license-global.pallycon.com/ri/licenseManager.do',
+                        licenseRequestHeader:{
+                            'pallycon-customdata-v2':'eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0LXVzZXIiLCJkcm1fdHlwZSI6IldpZGV2aW5lIiwic2l0ZV9pZCI6IkRFTU8iLCJoYXNoIjoiRFNEQ0JwWmhJYVR5VG1MMzlCXC9Yb2IyNzRobWpWXC9oWEp4T1V0K29hZ1pjPSIsImNpZCI6ImJpZ2J1Y2tidW5ueSIsInBvbGljeSI6Im41eDI4dVltRGRQQ0ZpbW9NM25HTnc9PSIsInRpbWVzdGFtcCI6IjIwMjEtMDEtMDZUMDk6MjI6MzZaIn0='
+                        }
+                    },
+                    'com.microsoft.playready':{
+                        src : 'https://contents.pallycon.com/bunny/stream.mpd',
+                        licenseUri : 'https://license-global.pallycon.com/ri/licenseManager.do',
+                        licenseRequestHeader:{
+                            'pallycon-customdata-v2':'eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0LXVzZXIiLCJkcm1fdHlwZSI6IlBsYXlSZWFkeSIsInNpdGVfaWQiOiJERU1PIiwiaGFzaCI6IllDRjViUE9UVHFjZWZDUnlBQks3Rnl0V21mNUJ0T3RhcGo4dVI0QXc2S1E9IiwiY2lkIjoiYmlnYnVja2J1bm55IiwicG9saWN5IjoibjV4Mjh1WW1EZFBDRmltb00zbkdOdz09IiwidGltZXN0YW1wIjoiMjAyMS0wMS0wNlQwOToyNDowN1oifQ=='
+                        }
+                    },
                 },
-            }
+                description:{
+                    title:"DRM 테스트",
+                    profile_name:"SGRSOFT Now17",
+                    profile_image:"https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202207/ebab15d06636b21136c50d7535ca2892.jpeg",
+                },
+
+            },
         ],
         autostart:true,
         muted:true,
-        keyboardShortcut:true,
-        controls:true,
-        lang:'ko',
-        ui:"all",
-        controlBtn:{
-            play:true,
-            fullscreen:true,
-            volume:true,
-            times:true,
-            pictureInPicture:true,
-            setting:true,
-            subtitle:false,
-        },
         progressBarColor:"#ff0000",
-        controlActiveTime:39000,
-        startMutedInfoNotVisible:false,
-        aspectRatio:"16/9",
-        objectFit:"contain",
-        playRateSetting:[0.5,0.75,1,1.5,2],
-        autoPause:false,
-        repeat:false,
-        lowLatencyMode:true
-    })
+    });
+
+
+
 });

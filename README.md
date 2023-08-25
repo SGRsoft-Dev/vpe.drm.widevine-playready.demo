@@ -1,26 +1,25 @@
 ## NAVER CLOUD PLATFORM Video Player Enhancement DEMO
 
-미디어플러스에서 제공하는 NAVERCLOUD VPE Player의 기본 코드
+미디어플러스에서 제공하는 NAVERCLOUD VPE Player의 Widevine/PlayReady DRM 데모 코드
 
 ![](https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202308/b3567d2fd1acd4a38efeafd99e2d121c.png)
 
 
 
 ## 소스코드
-[https://github.com/SGRsoft-Dev/mediaplus.demo.vpe.basic](https://github.com/SGRsoft-Dev/mediaplus.demo.vpe.basic)
+[https://github.com/SGRsoft-Dev/vpe.drm.widevine-playready.demo](https://github.com/SGRsoft-Dev/vpe.drm.widevine-playready.demo)
 
 
 *** 
 
 
 ## 필수
-- 네이버클라우드 플랫폼 Video Player Enhancement SDK URL 
-
+- 네이버클라우드 플랫폼 Video Player Enhancement SDK URL
 ***
 
 ## 제한사항
 
-현재 데모코드에 사용된 필수 요소들은 개발자 로컬 테스트에서만 동작합니다. (http://localhost:3000)
+현재 데모코드에 사용된 필수 요소들은 개발자 로컬 테스트에서만 동작합니다. (http://localhost)
 
 네이버클라우드 플랫폼 Video Player Enhancement 유료 라이선스가 필요합니다.
 ***
