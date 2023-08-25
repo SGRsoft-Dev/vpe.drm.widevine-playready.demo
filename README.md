@@ -2,7 +2,7 @@
 
 미디어플러스에서 제공하는 NAVERCLOUD VPE Player의 Widevine/PlayReady DRM 데모 코드
 
-![](https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202308/b3567d2fd1acd4a38efeafd99e2d121c.png)
+![](https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202308/db85e25df98bf242d0ae25724a975dd7.png)
 
 
 
