@@ -15,6 +15,8 @@
 
 ## 필수
 - 네이버클라우드 플랫폼 Video Player Enhancement SDK URL
+- 네이버클라우드 VOD Station 재생소스
+- PallyCon DRM 필수
 ***
 
 ## 제한사항
@@ -22,6 +24,9 @@
 현재 데모코드에 사용된 필수 요소들은 개발자 로컬 테스트에서만 동작합니다. (http://localhost)
 
 네이버클라우드 플랫폼 Video Player Enhancement 유료 라이선스가 필요합니다.
+
+해당 데모는 PallyCon DRM을 지원합니다. (https://pallycon.com)
+
 ***
 
 
@@ -29,37 +34,13 @@
 ### NAVERCLOUD PLATFORM Video Player Enhancement
 https://guide.ncloud-docs.com/docs/ko/vpe-overview
 
-### VPE 재생소스 설정 가이드
-https://guide.ncloud-docs.com/docs/vpe-example-source
 
-### VPE Web 설정 가이드
-https://guide.ncloud-docs.com/docs/vpe-web
+### VPE DRM 가이드
+https://guide.ncloud-docs.com/docs/vpe-example-auth#multidrm
 
-***
+### PallyCon DRM 가이드
+https://pallycon.com/ko/drm-platform/
 
-
-## NCP Video Player Enhancement SDK 설정
-![](https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202308/7a602c53cc6a0b69759031e44ad8e5d9.png)
-
-네이버클라우드 콘솔에서 Video Player Enhancement 진입
-
-***
-
-![](https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202308/bc8f9b9850f93396e7e07ca2c1c9cd4d.png)
-
-플레이어를 신규로 생성합니다.
-
-***
-
-![](https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202308/37fc51c8dccfdf2711ba7500203c685c.png)
-
-서비스를 운영할 도메인을 입력합니다.
-
-***
-
-![](https://nnbkegvqsbcu5297614.cdn.ntruss.com/profile/202308/6ad95ea2ed84a4412224a68f17d22c1b.png)
-
-생성된 플레이어의 SDK URL를 복사합니다.
 
 ***
 
@@ -70,6 +51,43 @@ $ npm install
 $ npm run dev
 ```
 
+## DRM 세팅
+
+```javascript
+// src/demo.js
+
+document.addEventListener('DOMContentLoaded',  async ()=> {
+
+    window.drmPlayer = await ncplayerDRM('player',{
+        playlist:[
+            {
+                drm:{
+                    'com.widevine.alpha':{
+                        src : '재생소스',
+                        licenseUri : '라이선스 URL',
+                        licenseRequestHeader:{
+                            'pallycon-customdata-v2':'와이드바인 토큰'
+                        }
+                    },
+                    'com.microsoft.playready':{
+                        src : '재생소스',
+                        licenseUri : '라이선스 URL',
+                        licenseRequestHeader:{
+                            'pallycon-customdata-v2':'플레이레디 토큰'
+                        }
+                    },
+                },
+            },
+        ],
+        autostart:true,
+        muted:true,
+        progressBarColor:"#ff0000",
+    });
+
+});
+
+
+```
 
 ***
 
